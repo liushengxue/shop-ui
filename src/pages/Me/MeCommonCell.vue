@@ -1,0 +1,27 @@
+<template>
+ <div></div>
+</template>
+
+<script>
+  export default {
+    name: "MeCommonCell",
+   
+  }
+</script>
+
+<style scoped lang="stylus" ref="stylesheet/stylus">
+  .cell
+    height 44px
+    background-color #fff
+    display flex
+    justify-content space-between
+    align-items center
+    padding 0 10px
+    border-bottom 1px solid #ececec
+    .cell-left,
+    .cell-right
+      display flex
+      align-items center
+      i
+        margin-right 5px
+</style>
