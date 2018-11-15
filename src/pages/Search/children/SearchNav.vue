@@ -2,7 +2,7 @@
   <div class="search-nav">
     <a href="" class="search-nav-icon" @click.prevent="showSearchPanel(true)">
       <img src="../images/search.png" alt="" width="25">
-      <span>撩课学院</span>
+      <span>请输入你要搜索的内容</span>
     </a>
   </div>
 </template>

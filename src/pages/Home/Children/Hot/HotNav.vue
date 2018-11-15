@@ -1,71 +1,11 @@
 <template>
   <div class="hot-nav">
     <!--滚动区域-->
-    <div class="hot-nav-content" >
+    <div class="hot-nav-content" v-if="homenav.length>0" >
       <div class="nav-content-inner">
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
-        </a>
-        <a class="inner-item" >
-          <img src="./../../imgs/nav/nav_icon01.png" alt="">
-          <span>限时秒杀</span>
+        <a class="inner-item" v-for="(nav,index) in homenav" :key="index">
+          <img :src="nav.iconurl" alt="">
+          <span>{{nav.icontitle}}</span>
         </a>
       </div>
     </div>
@@ -77,6 +17,7 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
  export default {
     name: "HotNav",
     data(){
@@ -99,7 +40,7 @@
     },
     computed:{
       
-
+      ...mapState(['homenav']),
       innerBarStyle(){
         return {
           width: `${this.barXWidth}px`,
@@ -108,7 +49,6 @@
       }
     },
     mounted() {
-
        this.getBottomBarWidth();
        this.bindEvent();
     },

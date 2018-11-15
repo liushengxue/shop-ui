@@ -1,16 +1,12 @@
 <template>
   <div class="hot">
     <!--1.轮播图-->
-    <div class="swiper-container">
+    <div class="swiper-container" v-if="homecasual.length>0">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" ><img src="../../imgs/rowing/s1.png" alt="" width=100%></div>
-        <div class="swiper-slide" ><img src="../../imgs/rowing/s2.png" alt="" width=100%></div>
-        <div class="swiper-slide" ><img src="../../imgs/rowing/s3.png" alt="" width=100%></div>
-        <div class="swiper-slide" ><img src="../../imgs/rowing/s4.png" alt="" width=100%></div>
-        <div class="swiper-slide" ><img src="../../imgs/rowing/s5.png" alt="" width=100%></div>
-        <div class="swiper-slide" ><img src="../../imgs/rowing/s6.png" alt="" width=100%></div>
-        <div class="swiper-slide" ><img src="../../imgs/rowing/s7.png" alt="" width=100%></div>
+        <div class="swiper-slide" v-for="(casual,index) in homecasual" :key="index"><img :src="casual.imgurl" alt="" width=100%></div>
       </div>
+      <!--分页器-->
+      <div class="swiper-pagination"></div>
     </div>
     <!--2.中间导航-->
     <hot-nav/>
@@ -27,24 +23,41 @@
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
   import HotNav from './HotNav'
+  import HotShopList from './HotShopList'
+  import {mapState} from 'vuex'
 
   export default {
     name: "Hot",
     components: {
-      HotNav
+      HotNav,
+      HotShopList
     },
-    // computed: {
-    //   ...mapState(['homecasual'])
-    // },
+    computed: {
+      ...mapState(['homecasual'])
+    },
     mounted() {
-    // 1. 请求轮播图的数据
-    //   this.$store.dispatch('reqHomeCasual');
-    //   // 2.请求首页导航的数据
-    //   this.$store.dispatch('reqHomeNav');
-    //   // 3. 请求首页的商品列表数据
-    //   this.$store.dispatch('reqHomeShopList');
+      //请求轮播数据
+      this.$store.dispatch('reqHomeCasual')
+      //请求导航数据
+      this.$store.dispatch('reqHomeNav')
+      //请求商品数据
+      this.$store.dispatch('reqHomeShopList')
+      
    },
-   
+   watch:{
+     homecasual(){
+       this.$nextTick(()=>{
+         //创建swiper实例
+          new Swiper('.swiper-container',{
+            autoplay:true,
+            loop:true,
+            pagination:{
+              el:'.swiper-pagination'
+            }
+          })
+       })
+     }
+   }
   }
 </script>
 

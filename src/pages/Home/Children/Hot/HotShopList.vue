@@ -1,14 +1,14 @@
 <template>
-  <div class="shop-container" v-if="homeshoplist.length > 0">
-    <ul class="shop-list">
-      <li class="shop-list-item" v-for="(shop, index) in homeshoplist" :key="index">
-        <img :src="shop.image_url" alt="" width="100%">
+  <div class="shop-container" >
+    <ul class="shop-list" v-if="homeshoplist.length>0">
+      <li class="shop-list-item" v-for="(shop,index) in homeshoplist" :key="index">
+        <img :src="shop.image_url" alt="" width="100%" >
         <h4 class="list-item-title">{{shop.goods_name}}</h4>
         <div class="list-item-bottom">
-          <span class="item-price">￥{{shop.normal_price / 100}}</span>
+          <span class="item-price">￥{{shop.normal_price/100}}</span>
           <span class="item-counter">{{shop.sales_tip}}</span>
           <span class="item-user">
-               <img :src="user.avatar" alt="" v-for="(user, index1) in shop.bubble" :key="index1">
+                <img :src="user.avatar" alt="" v-for="(user, index1) in shop.bubble" :key="index1">
              </span>
           <span class="item-buy">
                 <button>去拼单 ></button>
@@ -20,8 +20,8 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-
+  
+import {mapState} from 'vuex'
   export default {
     name: "HotShopList",
     computed:{
@@ -86,6 +86,4 @@
                    margin-left 10px
                    background-color red
                    border-radius 8px
-
-
 </style>

@@ -51,23 +51,27 @@ export default  new VueRouter({
                 // 电器版块
                 { path: 'ele', component: Ele },
                 { path: '/home', redirect: '/home/hot' }
-            ]
+            ],
         },
         {
             path: '/recommend',
             component: Recommend,
+            meta:{showBottomTabBar:true}
         },
         {
             path: '/search',
             component: Search,
+            meta: { showBottomTabBar: true }
         },
         {
             path: '/chat',
             component: Chat,
+            meta: { showBottomTabBar: true }
         },
         {
             path: '/me',
             component: Me,
+            meta: { showBottomTabBar: true }
         },
         {
             path: '/login',
